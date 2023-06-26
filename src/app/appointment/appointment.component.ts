@@ -19,7 +19,7 @@ export class AppointmentComponent implements OnInit {
   myform!: FormGroup;
   mydropdown!:FormGroup;
   entity: appointmententity = new appointmententity();
-  entity1:appointmententity[]=[];
+ 
   doctor: doctorentity=new doctorentity();
   doctorData:doctorentity[]=[];
   dId:any;
@@ -29,7 +29,7 @@ export class AppointmentComponent implements OnInit {
   doctors=[];
   ndoctor:doctorentity[]=[];
   appointmentDate: any;
-  data:any;
+  data=[];
 
   
   constructor(
@@ -57,6 +57,7 @@ export class AppointmentComponent implements OnInit {
        
      
       department: ['All']
+      
 
     });
     
@@ -116,13 +117,15 @@ export class AppointmentComponent implements OnInit {
    
   }
   searchdoc() {
-    if(this.sdoctor!='default' && this.sdepartment!='')
+    // if(this.sdoctor!='default' && this.sdepartment!='')
+    // {
+    //   this.getbyDoctorsNameDepartment(this.sdoctor,this.sdepartment);
+    //   console.log(this.sdepartment,this.sdoctor);
+    // }
+    this.doctorData=[];
+     if(this.sdoctor==='' && this.sdepartment!='')
     {
-      this.getbyDoctorsNameDepartment(this.sdoctor,this.sdepartment);
-      console.log(this.sdepartment,this.sdoctor);
-    }
-    else if(this.sdoctor==='default' && this.sdepartment!='')
-    {
+      
       this.getByDoctorDepartment(this.sdepartment);
     }
     else{
@@ -131,10 +134,6 @@ export class AppointmentComponent implements OnInit {
   }
   
   
-  // getAlldoctor(){
-  //   this.appointmentservice.getdoctor().subscribe(data=>{this.doctorData = data;});
-  //   console.log(this.doctorData);
-  // }
   // getAlldoctor() {
     
   //   this.appointmentservice.getdoctor().subscribe(data => {
@@ -157,20 +156,13 @@ export class AppointmentComponent implements OnInit {
       console.log(this.doctorData);
     });
   }
+  // This method helps in retriving the list of doctor from the selected dpartment using the dropdown.
   getByDoctorDepartment(dept:string):void{
-    this.appointmentservice.getDoctorByDepartment(dept).subscribe((res)=>{
-      this.ndoctor=[];
-      console.log(res);
-      this.data=res;
-      for(let i=0;i<this.data.length;i++){
-        this.doctor= new doctorentity();
-        this.doctor.doctorId=this.data[i]['doctorId'];
-        this.doctor.doctorName=this.data[i]['doctorName'];
-        this.doctor.department=this.data[i]['department'];
-        this.ndoctor.push(this.doctor);
-        console.log(this.doctor);
-      }
     
+    this.appointmentservice.getDoctorByDepartment(dept).subscribe((res)=>{
+      
+      
+      this.doctorData=res;
     },
     (error)=>{
       if(error.status === 400){
@@ -182,104 +174,41 @@ export class AppointmentComponent implements OnInit {
     
   }
 
-  getbyDoctorsNameDepartment(dname:string,docdept:string){
+  // getbyDoctorsNameDepartment(dname:string,docdept:string){
 
-  this.appointmentservice.getDoctorByNameDepartment(dname,docdept).subscribe((res)=>{
-    console.log(res);
-    this.ndoctor=[];
-    this.data=res;
-    for(let  i=0;i<this.data.length;i++){
-      this.doctor=new doctorentity();
-      this.doctor.doctorId=this.data[i]['doctorId'];
-      this.doctor.doctorName=this.data[i]['doctorName'];
-      this.doctor.department=this.data[i]['department'];
-      this.ndoctor.push(this.doctor);
-    }
-
-  },
-  error => {
-    if (error.status === 404) {
-      alert('No Doctors Found');
-      window.location.reload();
-    } else {
-      // Handle other error cases here
-    }
-  });
-  
-  }
-  // getDoctorsByNameandSpec(doctorname: string,specialization:string) {
-  //   this.service.getDoctorByNameandSpec(doctorname,specialization).subscribe(response => {
-  //     console.log(response);
-  //     // Clear the previous search results
-  //     this.doctors = [];
-  //     this.posts = response;
-  //     for (let i = 0; i < this.posts.length; i++) {
-  //       this.doctor = new Doctor();
-  //       this.doctor.doctorId = this.posts[i]['doctorId'];
-  //       this.doctor.doctorName = this.posts[i]['doctorName'];
-  //       this.doctor.doctorSpecialization = this.posts[i]['doctorSpecialization'];
-  //       this.doctor.doctorLocation = this.posts[i]['doctorLocation'];
-  //       this.doctor.doctorRating = this.posts[i]['doctorRating'];
-  //       this.doctors.push(this.doctor);
-  //     }
+  // this.appointmentservice.getDoctorByNameDepartment(dname,docdept).subscribe((res)=>{
+  //   console.log(res);
+  //   this.ndoctor=[];
+  //   this.data=res;
+  //   for(let  i=0;i<this.data.length;i++){
+  //     this.doctor=new doctorentity();
+  //     this.doctor.doctorId=this.data[i]['doctorId'];
+  //     this.doctor.doctorName=this.data[i]['doctorName'];
+  //     this.doctor.department=this.data[i]['department'];
+  //     this.ndoctor.push(this.doctor);
   //   }
-  //   ,
-    
-  //   error => {
-  //     if (error.status === 404) {
-  //       alert('No Doctors Found');
-  //       window.location.reload();
-  //     } else {
-  //       // Handle other error cases here
-  //     }
-  //   });
+
+  // },
+  // error => {
+  //   if (error.status === 404) {
+  //     alert('No Doctors Found');
+  //     window.location.reload();
+  //   } else {
+  //     // Handle other error cases here
+  //   }
+  // });
   
   // }
+ 
 
 
-
-  // getDoctorsBySpecialization(specialization: string) {
-  //   this.service.getDoctorBySpecialization(specialization).subscribe(response => {
-  //     console.log(response);
-  //     // Clear the previous search results
-  //     this.doctors = [];
-  //     this.posts = response;
-  //     for (let i = 0; i < this.posts.length; i++) {
-  //       this.doctor = new Doctor();
-  //       this.doctor.doctorId = this.posts[i]['doctorId'];
-  //       this.doctor.doctorName = this.posts[i]['doctorName'];
-  //       this.doctor.doctorSpecialization = this.posts[i]['doctorSpecialization'];
-  //       this.doctor.doctorLocation = this.posts[i]['doctorLocation'];
-  //       this.doctor.doctorRating = this.posts[i]['doctorRating'];
-  //       this.doctors.push(this.doctor);
-  //     }
-  //   }
-  //   ,
-  //   error => {
-  //     if (error.status === 404) {
-  //       alert('No Doctors Found');
-  //       window.location.reload();
-  //     } else {
-  //       // Handle other error cases here
-  //     }
-  //   });
-  
-  // }
-
-
-
+  // This method is used to get the list of doctor corresponding to the entered doctor name.
 
   getByDoctorName(name:string){
     this.appointmentservice.getDoctorsByName(name).subscribe((res)=>{
+      console.log(res)
       this.data=res;
-      this.ndoctor=[];
-      for (let i = 0; i < this.data.length; i++) {
-        this.doctor=new doctorentity();
-        this.doctor.doctorId=this.data[i]['doctorId'];
-        this.doctor.doctorName=this.data[i]['doctorName'];
-        this.doctor.department=this.data[i]['department'];
-      }
-
+      this.doctorData.push(res);
     },
     (error)=>{
       if(error.status===400){
@@ -294,38 +223,23 @@ export class AppointmentComponent implements OnInit {
 
 
 
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   //This method is for removing the duplicate doctorId.this is called in the postappointmnet function.
   removeDuplicates(array: any[], key: string) {
     return array.filter((obj, index, self) =>
       index === self.findIndex((el) => el[key] === obj[key])
     );
   }
-  //This work for the dropdown of the department
-  onDepartmentChange(value: string) {
-    // Assign the selected value to the corresponding form control
-    this.mydropdown.get('department')?.setValue(value);
+  // //This work for the dropdown of the department
+  // onDepartmentChange(value: string) {
+  //   // Assign the selected value to the corresponding form control
+  //   this.mydropdown.get('department')?.setValue(value);
    
-  }
+  // }
   //This work to get the appointment Time from the drop down.
   onAppointmentTime(value:string){
     this.myform.get('appointmentTime')?.setValue(value);
   }
+  
  
 
 }
