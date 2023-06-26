@@ -1,55 +1,38 @@
 <div class="container">
-    <div class="input-group mb-5 ">
-        <input type="search" class="form-control rounded" name="search" id="search-bar" placeholder="Search" aria-label="Search"
-            aria-describedby="search-addon" style="width: 200px;" />
-        <button type="button" class="btn btn-primary" style="height: 40px; border-radius:5px"[(ngModel)]="sdoctor">Search</button>
+    <div class="input-group mb-5">
+        <input type="search" class="form-control rounded" name="search" id="search-bar" placeholder="Search"
+            aria-label="Search" aria-describedby="search-addon" style="width: 200px;" [(ngModel)]="sdoctor" />
+        <!-- <button type="button" class="btn btn-primary" style="height: 40px; border-radius: 5px" (click)="searchdoc()" >Search</button>  -->
 
-
-        <div class="form-group ms-auto mb-5" style="width: 200px;" [formGroup]="mydropdown">
+        <!-- <div class="form-group ms-auto mb-5" style="width: 200px;" [formGroup]="mydropdown"> -->
+        <div class="form-group ms-auto mb-5" style="width: 200px;">
             <label for="department">Department</label>
-            <select class="form-select" id="department" formControlName="department" [(ngModel)]="sdepartment" >
+            <select class="form-select" id="department" name="department" [(ngModel)]="sdepartment">
+
                 <option value="default" selected="selected">Speciality</option>
-                <option value="cardiology" >Cardio</option>
-                <option value="opthamology">Opthamology</option>
-                <option value="gastrology">Gastrology</option> 
-                <!-- // <option *ngFor="let dept of doctorData" [value]="dept.department">{{dept.department}}</option>  -->
+
+                <option value="cardiology">Cardiology</option>
+                <option value="ophthalmology">Ophthalmology</option>
+                <option value="gastrology">Gastrology</option>
+                <option value="orthology">Orthology/option>
+                <option value="physician">Physician</option>
+                <option value="urology">Urology</option>
             </select>
-            <button class="btn btn-primary" type="button" (click)="searchdoc()">Search</button>
+            <!-- <button class="btn btn-primary" type="button" (click)="searchdoc()">Search</button> -->
+            <button type="button" class="btn btn-primary" style="height: 40px; border-radius: 5px"
+                (click)="searchdoc()">Search</button>
         </div>
-
-
     </div>
+
+
 
 
 
     <section id="gallery">
         <div class="container1">
             <div class="row">
-
-                <!-- <div class="col-lg-4 mb-4" [formGroup]="formValue">
-                    <div class="card">
-                        <div class="d-flex flex-row">
-                            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80"
-                                alt="" class="card-img-top imageround ">
-
-                            <div class="card-body d-flex flex-column" *ngFor="let doc of doctorData">
-                                <h5 class="card-title" formControlName="doctorName">{{doc.doctorName}}</h5>
-                                <h6 class="card-sub-title" formControlName="department">{{doc.department}}</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row justify-content-center btn-pad ">
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                class="btn btn-outline-success btn-sm">Book Appointment</button>
-
-                            <a href="" class="btn btn-outline-danger btn-sm"> View Profile</a>
-                        </div>
-                    </div>
-                </div> -->
-
-
-
                 <div class="col-lg-4 mb-4" *ngFor="let doc of doctorData">
-                    <div class="card" [formGroup]="myform">
+                    <div class="card">
                         <div class="d-flex flex-row">
                             <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80"
                                 alt="" class="card-img-top imageround">
@@ -57,23 +40,17 @@
                                 <option class="card-title">{{ doc.doctorName }}</option>
                                 <option class="card-sub-title">{{ doc.department }}</option>
                                 <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                    class="btn btn-outline-success btn-sm" (click)="doctorDetails(doc)">Book Appointment</button>
+                                    class="btn btn-outline-success btn-sm" (click)="doctorDetails(doc)">Book
+                                    Appointment</button>
                                 <a href="" class="btn btn-outline-danger btn-sm">View Profile</a>
                             </div>
                         </div>
                     </div>
 
-
                 </div>
-
-
-
-
 
             </div>
         </div>
-
-
 
     </section>
 
@@ -100,7 +77,7 @@
                             <input type="text" class="form-control" id="userId" formControlName="userId"
                                 placeholder="Enter your ID" required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="doctorId">Doctor Id</label>
                             <input type="text" class="form-control" id="doctorId" formControlName="doctorId"
@@ -116,28 +93,17 @@
                             <input type="text" class="form-control" id="doctorId" formControlName="department"
                                 placeholder="Enter doctor's Id" required>
                         </div>
-                       
+
                         <div class="form-group" [formGroup]="myform">
                             <label for="appointmentTime">Appointment Time</label>
-                            <!-- <input type="text" class="form-control" id="slotTime" formControlName="appointmentTime"
-                                placeholder="Enter slot time" required> -->
-                            <select class="form-control"  id="date" formControlName="appointmentTime">
-                                <option>8:00:00</option>
-                                <option>9:00:00</option>
-                                <option>10:00:00</option>
+
+                            <select class="form-control" id="date" formControlName="appointmentTime">
+                                <option>08:00</option>
+                                <option>09:00</option>
+                                <option>10:00</option>
                             </select>
                         </div>
-                        <!-- <div class="input-group  col-sm-12">
-                            <input class="form-control" placeholder="yyyy-mm-dd">
-                            <div class="input-group-append">
-                              <button 
-                                class="btn btn-outline-secondary calendar"
-                                (click)="d.toggle()"
-                                type="button"><i class="fa fa-calendar"></i></button>
-                            </div>
-                          </div> -->
-                          <!-- <input class="form-control" placeholder="yyyy-mm-dd" name="appointmentTime"[(ngModel)]="appointmentDate"ngbDatepicker #d="ngbDatepicker">
-                         -->
+
                         <div class="form-group">
                             <label>
                                 Choose your preferred slot date:
