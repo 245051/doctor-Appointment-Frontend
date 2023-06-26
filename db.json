@@ -1,0 +1,85 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "appointmentId": 0,
+      "userId": "13",
+      "userName": "hai",
+      "doctorName": "jake",
+      "details": "dQWD",
+      "department": "cardio",
+      "appointmentDate": "2023-07-04",
+      "appointmentTime": "12",
+      "id": 2
+    },
+    {
+      "appointmentId": 0,
+      "userId": "234",
+      "userName": "sagar",
+      "doctorName": "emman",
+      "details": "kj",
+      "department": "urology",
+      "appointmentDate": "2023-07-06",
+      "appointmentTime": "7:00",
+      "id": 3
+    },
+    {
+      "appointmentId": 0,
+      "userId": "ewfrg",
+      "userName": "qwef",
+      "doctorName": "esfdg",
+      "details": "frgthy",
+      "department": "aefsd",
+      "appointmentDate": "2023-06-30",
+      "appointmentTime": "dsffdbgf",
+      "id": 4
+    },
+    {
+      "appointmentId": 0,
+      "userId": "ewrt",
+      "userName": "werfr",
+      "doctorName": "rewter",
+      "details": "drg",
+      "department": "eqewrt",
+      "appointmentDate": "2023-06-29",
+      "appointmentTime": "weret",
+      "id": 5
+    },
+    {
+      "appointmentId": 0,
+      "userId": "qwerwt",
+      "userName": "anything",
+      "doctorName": "Mr. Doc",
+      "details": "ssf",
+      "department": "kj",
+      "appointmentDate": "2023-06-29",
+      "appointmentTime": "dfbg",
+      "id": 6
+    },
+    {
+      "appointmentId": 0,
+      "userId": "EE",
+      "userName": "q",
+      "doctorName": "wd",
+      "details": "qwd",
+      "department": "ad",
+      "appointmentDate": "2023-06-21",
+      "appointmentTime": "d",
+      "id": 7
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

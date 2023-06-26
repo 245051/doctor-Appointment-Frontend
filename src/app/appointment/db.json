@@ -1,0 +1,30 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "appointmentId": 0,
+      "userId": "lk",
+      "userName": "u",
+      "doctorName": "lk",
+      "details": ".kn,",
+      "department": "",
+      "appointmentDate": "2023-06-27",
+      "appointmentTime": "88",
+      "id": 2
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
